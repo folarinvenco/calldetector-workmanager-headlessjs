@@ -1,0 +1,1 @@
+https://github.com/react-native-webrtc/react-native-callkeep/issues/594
