@@ -2,34 +2,30 @@
   package="com.awesometsproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_CALL_LOG" />
-    <uses-permission android:name="android.permission.BIND_TELECOM_CONNECTION_SERVICE"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
-      android:allowBackup="false"
+      android:allowBackup="true"
       android:theme="@style/AppTheme">
-       <service android:name="io.wazo.callkeep.RNCallKeepBackgroundMessagingService" />
-       <service android:name="io.wazo.callkeep.VoiceConnectionService"
-        android:label="Wazo"
-        android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
-        android:foregroundServiceType="phoneCall|camera|microphone"
-        
-        android:exported="true"
-       >  
-        
-        <intent-filter>
-            <action android:name="android.telecom.ConnectionService" />
-        </intent-filter>
-      </service>
-
+      <!-- <service android:name="com.awesometsproject.CallDectect" /> -->
+        <service android:name=".CallDetector.CallDetectorService" />
+        <service android:name=".GeoLocation.LocationService" />
+      <receiver android:name="com.awesometsproject.CallDetector.CallDetectorReceiver" android:enabled="true" android:label="CallDetectorService"
+          android:exported="true">
+          <intent-filter>
+              <action android:name="android.intent.action.PHONE_STATE" />
+          </intent-filter>
+      </receiver>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

@@ -10,10 +10,10 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@notifee/react-native": "^5.7.0",
     "react": "18.0.0",
     "react-native": "0.69.3",
-    "react-native-background-timer": "^2.4.1",
-    "react-native-callkeep": "^4.3.3",
+    "react-native-call-detection": "^1.9.0",
     "react-native-device-info": "^10.1.2",
     "uuid": "^3.3.2"
   },
